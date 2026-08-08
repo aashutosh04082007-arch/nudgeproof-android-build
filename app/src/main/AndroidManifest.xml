@@ -14,31 +14,6 @@
         android:theme="@style/Theme.NudgeProof"
         android:usesCleartextTraffic="false">
 
-        <service
-            android:name=".NudgeProofAccessibilityService"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
-            android:exported="false"
-            android:label="NudgeProof Phone-wide Protection">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility_service_config" />
-        </service>
-
-        <activity
-            android:name=".ProtectionSetupActivity"
-            android:exported="true"
-            android:screenOrientation="unspecified">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="nudgeproof" android:host="system-shield" />
-            </intent-filter>
-        </activity>
-
         <activity
             android:name=".SecureBrowserActivity"
             android:exported="true"
