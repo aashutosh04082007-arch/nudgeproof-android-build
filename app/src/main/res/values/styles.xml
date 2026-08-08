@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.NudgeProof" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">@color/np_violet</item>
+        <item name="android:navigationBarColor">@color/np_bg</item>
+        <item name="android:statusBarColor">@color/np_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/np_bg</item>
+    </style>
+</resources>
