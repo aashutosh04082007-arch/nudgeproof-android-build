@@ -28,6 +28,18 @@
         </service>
 
         <activity
+            android:name=".ProtectionSetupActivity"
+            android:exported="true"
+            android:screenOrientation="unspecified">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="nudgeproof" android:host="system-shield" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".SecureBrowserActivity"
             android:exported="true"
             android:screenOrientation="unspecified"
