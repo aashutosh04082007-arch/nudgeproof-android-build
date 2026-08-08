@@ -1,0 +1,7 @@
+<resources>
+    <color name="np_bg">#090313</color>
+    <color name="np_violet">#8B5CF6</color>
+    <color name="np_violet_dark">#4C1D95</color>
+    <color name="np_text">#F8F7FF</color>
+    <color name="np_muted">#B9B3C9</color>
+</resources>
