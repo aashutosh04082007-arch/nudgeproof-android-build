@@ -44,21 +44,18 @@ jobs:
           APK=app/build/outputs/apk/debug/app-debug.apk
           BT="$ANDROID_SDK_ROOT/build-tools/35.0.0"
           test -f "$APK"
-          test -x "$BT/aapt"
-          test -x "$BT/zipalign"
-          test -x "$BT/apksigner"
-          "$BT/aapt" dump badging "$APK" | head -20
+          "$BT/aapt" dump badging "$APK" | head -30
           "$BT/zipalign" -c -v 4 "$APK"
           "$BT/apksigner" verify --verbose --print-certs "$APK"
           sha256sum "$APK" | tee APK_SHA256.txt
 
       - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk NudgeProof-Mobile-v4.0.0-Android11-Test.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk NudgeProof-Mobile-v4.3.0-System-Shield.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: NudgeProof-Mobile-v4.0.0-Android11-Test
+          name: NudgeProof-Mobile-v4.3.0-System-Shield
           path: |
-            NudgeProof-Mobile-v4.0.0-Android11-Test.apk
+            NudgeProof-Mobile-v4.3.0-System-Shield.apk
             APK_SHA256.txt
           if-no-files-found: error
