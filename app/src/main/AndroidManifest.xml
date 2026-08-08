@@ -8,10 +8,16 @@
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/nudgeproof_icon"
+        android:roundIcon="@drawable/nudgeproof_icon"
         android:label="NudgeProof AI"
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.NudgeProof"
         android:usesCleartextTraffic="false">
+        <activity
+            android:name=".SecureBrowserActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize|uiMode" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
