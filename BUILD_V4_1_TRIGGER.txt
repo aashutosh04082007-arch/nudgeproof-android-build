@@ -1,1 +1,2 @@
 Trigger CI for NudgeProof Android v4.1 red theme and authentication navigation fix.
+Rebuild requested after WebView auth + red theme update.
