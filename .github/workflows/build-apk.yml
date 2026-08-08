@@ -42,10 +42,14 @@ jobs:
         shell: bash
         run: |
           APK=app/build/outputs/apk/debug/app-debug.apk
+          BT="$ANDROID_SDK_ROOT/build-tools/35.0.0"
           test -f "$APK"
-          aapt dump badging "$APK" | head -20
-          zipalign -c -v 4 "$APK"
-          apksigner verify --verbose --print-certs "$APK"
+          test -x "$BT/aapt"
+          test -x "$BT/zipalign"
+          test -x "$BT/apksigner"
+          "$BT/aapt" dump badging "$APK" | head -20
+          "$BT/zipalign" -c -v 4 "$APK"
+          "$BT/apksigner" verify --verbose --print-certs "$APK"
           sha256sum "$APK" | tee APK_SHA256.txt
 
       - name: Rename APK
