@@ -35,31 +35,32 @@ jobs:
         with:
           gradle-version: '8.10.2'
 
-      - name: Build sideload APK
-        run: gradle :app:assembleDebug --stacktrace
+      - name: Build non-debuggable release APK
+        run: gradle :app:assembleRelease --stacktrace
 
       - name: Verify APK and sensitive permissions
         shell: bash
         run: |
-          APK=app/build/outputs/apk/debug/app-debug.apk
+          APK=app/build/outputs/apk/release/app-release.apk
           BT="$ANDROID_SDK_ROOT/build-tools/35.0.0"
           test -f "$APK"
           "$BT/aapt" dump badging "$APK" | tee APK_BADGING.txt
           "$BT/aapt" dump permissions "$APK" | tee APK_PERMISSIONS.txt
           ! grep -q "BIND_ACCESSIBILITY_SERVICE" APK_PERMISSIONS.txt
           ! grep -q "SYSTEM_ALERT_WINDOW" APK_PERMISSIONS.txt
+          ! grep -q "application-debuggable" APK_BADGING.txt
           "$BT/zipalign" -c -v 4 "$APK"
           "$BT/apksigner" verify --verbose --print-certs "$APK"
           sha256sum "$APK" | tee APK_SHA256.txt
 
       - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk NudgeProof-Mobile-v4.4.0-PlayProtect-Sideload.apk
+        run: cp app/build/outputs/apk/release/app-release.apk NudgeProof-Mobile-v4.4.0-PlayProtect-Release.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: NudgeProof-Mobile-v4.4.0-PlayProtect-Sideload
+          name: NudgeProof-Mobile-v4.4.0-PlayProtect-Release
           path: |
-            NudgeProof-Mobile-v4.4.0-PlayProtect-Sideload.apk
+            NudgeProof-Mobile-v4.4.0-PlayProtect-Release.apk
             APK_SHA256.txt
             APK_BADGING.txt
             APK_PERMISSIONS.txt
