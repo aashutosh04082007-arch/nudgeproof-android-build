@@ -10,8 +10,8 @@ android {
         applicationId 'ai.nudgeproof.mobile'
         minSdk 24
         targetSdk 30
-        versionCode 420
-        versionName '4.2.0'
+        versionCode 430
+        versionName '4.3.0'
     }
 
     buildTypes {
