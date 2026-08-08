@@ -9,18 +9,20 @@ android {
     defaultConfig {
         applicationId 'ai.nudgeproof.mobile'
         minSdk 24
-        targetSdk 30
-        versionCode 400
-        versionName '4.0.0'
+        targetSdk 35
+        versionCode 440
+        versionName '4.4.0'
     }
 
     buildTypes {
         debug {
             applicationIdSuffix ''
-            versionNameSuffix '-test'
+            versionNameSuffix '-sideload'
         }
         release {
             minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.debug
         }
     }
 
